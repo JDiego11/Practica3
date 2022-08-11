@@ -4,20 +4,28 @@
 
 }*/
 
-char *TextToBin2(char *texto) {
-    char *CodeText = new char;
-    char *ArrayAux;
-    int x = 0, y = 0;
-    while (texto[x] = '\0') {
-        ArrayAux = CharToBin2(texto[x]);
-        for (int i=0; i<8; i++) {
-            CodeText[y] = ArrayAux[i];
-            y++;
+char *TextToBin2 (char *texto) {
+    int SizeArray = Arraylenght(texto);
+    int size = (SizeArray*8);
+    char *CodeText = new char[size];
+    //char *ArrayAux = new char[8];
+    int x=0;
+    for (int i=0; i<SizeArray; i++) {
+        for (int j = 0; j<8; j++) {
+            CodeText[x] = *(CharToBin2(texto[i])+j);
+            x++;
         }
-        x++;
     }
-    delete[] ArrayAux;
+    CodeText[size] = '\0';
     return CodeText;
+}
+
+int Arraylenght(char *array) {
+    int cont = 0;
+    while (array[cont] != '\0') {
+        cont++;
+    }
+    return cont;
 }
 
 char *CharToBin2(int letra) {
@@ -31,5 +39,40 @@ char *CharToBin2(int letra) {
         }
         letra /= 2;
     }
+    BinLet[8] = '\0';
     return BinLet;
+}
+
+/*char *Decodificacion2(int semilla, string texto, string file)
+{
+
+}*/
+
+char *BinToText2(char *code) {
+    int size = Arraylenght(code)/8;
+    int aux = 0;
+    char* Text = new char[size+1];
+    char* Aux;
+    for (int i=0; i<size; i++) {
+        Aux = new char[8];
+        for (int j=0; j<8; j++) {
+            Aux[j] = *(code + (aux+j));
+        }
+        Aux[8] = '\0';
+        Text[i] = char(BinToChar2(Aux));
+        aux += 8;
+    }
+    Text[size] = '\0';
+    return Text;
+}
+
+int BinToChar2(char *letra) {
+    int DecodeLet = 0;
+    for (int i=0; i<8; i++) {
+        DecodeLet *= 2;
+        if (*(letra+i) == '1') {
+            DecodeLet++;
+        }
+    }
+    return DecodeLet;
 }

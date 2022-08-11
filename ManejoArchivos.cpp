@@ -49,11 +49,9 @@ char *ReadFile2(string name, bool mode){
             char termino;
             for (unsigned long long i=0;i<tam;i++){
                 termino= text.get();
-                if(termino != EOF){
-                    datos[i]=termino;
-                }
-                else  datos[i]='\0';
+                datos[i]=termino;
             }
+            datos[tam] = '\0';
         }
         else cout<<"El archivo no pudo ser abierto"<<endl;
     }
@@ -64,13 +62,11 @@ char *ReadFile2(string name, bool mode){
             datos = new char[tam];
             text.seekg(0);
             char valorBinario;
-            for(unsigned long long i=0;i<tam+1;i++){
+            for(unsigned long long i=0;i<tam;i++){
                 valorBinario=text.get();
-                if(valorBinario !=EOF){
-                    datos[i]=valorBinario;
-                }
-                else datos[i]='\0';
+                datos[i]=valorBinario;
             }
+            datos[tam] = '\0';
         }
     }
     text.close();
