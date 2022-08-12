@@ -1,8 +1,26 @@
 #include "metodo2.h"
 
-/*char *Codificacion2(int semilla, string file) {
-
-}*/
+char *Codificacion2(int semilla, string file) {
+    char* Texto = new char;
+    Texto = ReadFile2(file, 1);
+    int Size = Arraylenght(Texto);
+    char* BinText = new char[Size*8];
+    BinText = TextToBin2(Texto);
+    int Size2 = Arraylenght(BinText);
+    char* aux2 = new char[Size2];
+    for (int i=semilla; i<Size2; i++) {
+        if (i<(Size2-semilla)) {
+            aux2[i-semilla] = BinText[i];
+        }
+        else {
+            aux2[i] = BinText[Size2-i-semilla];
+        }
+    }
+    aux2[Size2] ='\0';
+    delete Texto;
+    delete[] BinText;
+    return aux2;
+}
 
 char *TextToBin2 (char *texto) {
     int SizeArray = Arraylenght(texto);
