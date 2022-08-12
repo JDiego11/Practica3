@@ -9,17 +9,22 @@ char *Codificacion2(int semilla, string file) {
     int Size2 = Arraylenght(BinText);
     char* aux2 = new char[Size2];
     for (int i=semilla; i<Size2; i++) {
-        if (i<(Size2-semilla)) {
             aux2[i-semilla] = BinText[i];
-        }
-        else {
-            aux2[i] = BinText[Size2-i-semilla];
-        }
+    }
+    for (int i=0; i<semilla; i++) {
+        aux2[Size2-semilla+i] = BinText[i];
     }
     aux2[Size2] ='\0';
-    delete Texto;
-    delete[] BinText;
+    //delete Texto;
+    //delete[] BinText;
     return aux2;
+}
+
+char *Decodificacion2(int semilla, string file) {
+    char* CodeText = new char;
+
+    int Size1 = Arraylenght(CodeText);
+    delete CodeText;
 }
 
 char *TextToBin2 (char *texto) {
@@ -60,11 +65,6 @@ char *CharToBin2(int letra) {
     BinLet[8] = '\0';
     return BinLet;
 }
-
-/*char *Decodificacion2(int semilla, string texto, string file)
-{
-
-}*/
 
 char *BinToText2(char *code) {
     int size = Arraylenght(code)/8;

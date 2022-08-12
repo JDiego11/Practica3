@@ -9,7 +9,7 @@ char *CharToBin2(int letra);
 int Arraylenght(char *array);
 
 //Decodificación
-char *Decodificacion2(int semilla, string texto, string file);
+char *Decodificacion2(int semilla, string file);
 char *BinToText2(char *code);
 int BinToChar2(char *letra);
 
