@@ -6,6 +6,8 @@ int main()
 {
     cout << Arraylenght(Codificacion2(4, "Archivo.txt")) << endl;
     cout << Codificacion2(4, "Archivo.txt") << endl;
+    cout << endl;
+    cout << Decodificacion2(4, "Codify.txt");
     /*char arr[4] = {'A','b','C','d'};
     char* Bintext = TextToBin2(arr);
     int len = Arraylenght(Bintext);

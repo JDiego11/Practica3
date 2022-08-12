@@ -22,9 +22,18 @@ char *Codificacion2(int semilla, string file) {
 
 char *Decodificacion2(int semilla, string file) {
     char* CodeText = new char;
-
+    CodeText = ReadFile2(file, 1);
     int Size1 = Arraylenght(CodeText);
+    char* aux = new char[Size1];
+    for (int i=0; i<Size1-semilla; i++) {
+        aux[i] = CodeText[i+semilla];
+    }
+    for (int i=0; i< semilla; i++) {
+        aux[Size1-semilla+i] = CodeText[i];
+    }
+    aux[Size1] = '\0';
     delete CodeText;
+    return aux;
 }
 
 char *TextToBin2 (char *texto) {
